@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Kristen, con amor 💗</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            min-height: 100vh;
+            background: linear-gradient(to bottom, #200000, #000000);
+            overflow-x: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            padding: 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            z-index: 2;
+        }
+
+        .rain-container {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            overflow: hidden;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .love-word {
+            position: absolute;
+            color: rgba(255, 0, 0, 0.6);
+            font-size: 20px;
+            font-weight: bold;
+            animation: fall linear infinite;
+            text-shadow: 0 0 5px rgba(255, 0, 85, 0.8), 
+                         0 0 10px rgba(255, 0, 85, 0.6),
+                         0 0 15px rgba(255, 0, 85, 0.4);
+            filter: drop-shadow(0 0 8px rgba(255, 0, 85, 0.8));
+        }
+        
+        @keyframes fall {
+            to {
+                transform: translateY(100vh);
+            }
+        }
+        
+        .heart-container {
+            position: relative;
+            width: 100%;
+            max-width: 300px;
+            height: 270px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2;
+            margin: 20px 0;
+            filter: drop-shadow(0 0 15px rgba(255, 0, 85, 0.7));
+        }
+        
+        .heart {
+            position: relative;
+            width: 180px;
+            height: 160px;
+            animation: heartbeat 2s infinite;
+        }
+        
+        .heart:before, 
+        .heart:after {
+            content: "";
+            position: absolute;
+            left: 90px;
+            width: 90px;
+            height: 140px;
+            background: #ff3385;
+            border-radius: 90px 90px 0 0;
+            transform: rotate(-45deg);
+            transform-origin: 0 100%;
+            box-shadow: 0 0 20px rgba(255, 51, 133, 0.8),
+                        inset 0 0 15px rgba(255, 255, 255, 0.4);
+        }
+        
+        .heart:after {
+            left: 0;
+            transform: rotate(45deg);
+            transform-origin: 100% 100%;
+            box-shadow: 0 0 20px rgba(255, 51, 133, 0.8),
+                        inset 0 0 15px rgba(255, 255, 255, 0.4);
+        }
+        
+        /* Latido del corazón */
+        @keyframes heartbeat {
+            0% { 
+                transform: scale(1);
+                filter: drop-shadow(0 0 5px rgba(255, 0, 85, 0.7));
+            }
+            14% { 
+                transform: scale(1.1);
+                filter: drop-shadow(0 0 15px rgba(255, 0, 85, 0.9));
+            }
+            28% { 
+                transform: scale(1);
+                filter: drop-shadow(0 0 5px rgba(255, 0, 85, 0.7));
+            }
+            42% { 
+                transform: scale(1.15);
+                filter: drop-shadow(0 0 20px rgba(255, 0, 85, 1));
+            }
+            70% { 
+                transform: scale(1);
+                filter: drop-shadow(0 0 5px rgba(255, 0, 85, 0.7));
+            }
+            100% { 
+                transform: scale(1);
+                filter: drop-shadow(0 0 5px rgba(255, 0, 85, 0.7));
+            }
+        }
+
+        .message {
+            color: white;
+            font-size: 18px;
+            text-align: center;
+            width: 100%;
+            text-shadow: 0 0 10px rgba(255, 0, 85, 0.8),
+                         0 0 20px rgba(255, 0, 85, 0.6),
+                         0 0 30px rgba(255, 0, 85, 0.4);
+            margin: 20px 0;
+            padding: 0 15px;
+            z-index: 2;
+            filter: drop-shadow(0 0 8px rgba(255, 0, 85, 0.7));
+        }
+
+        .music-player {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 15px;
+            border-radius: 15px;
+            color: white;
+            z-index: 10;
+            box-shadow: 0 0 20px rgba(255, 0, 85, 0.8),
+                        0 0 40px rgba(255, 0, 85, 0.4),
+                        inset 0 0 15px rgba(255, 0, 85, 0.3);
+            border: 1px solid rgba(255, 0, 85, 0.5);
+            width: 100%;
+            max-width: 300px;
+            backdrop-filter: blur(5px);
+            margin: 20px 0;
+        }
+        
+        .music-player h3 {
+            margin-bottom: 15px;
+            font-size: 18px;
+            text-align: center;
+            color: #ff66a3;
+            text-shadow: 0 0 10px rgba(255, 0, 85, 0.8),
+                         0 0 20px rgba(255, 0, 85, 0.6);
+            filter: drop-shadow(0 0 5px rgba(255, 0, 85, 0.7));
+        }
+        
+        .album-art-container {
+            position: relative;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 15px;
+            filter: drop-shadow(0 0 10px rgba(255, 0, 85, 0.7));
+        }
+        
+        .album-art {
+            width: 100px;
+            height: 100px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 0 15px rgba(255, 0, 85, 0.8),
+                        0 0 30px rgba(255, 0, 85, 0.5),
+                        inset 0 0 10px rgba(255, 255, 255, 0.3);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(45deg, #ff3385, #ff66a3);
+            border: 1px solid rgba(255, 0, 85, 0.5);
+        }
+        
+        .album-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+        
+        .now-playing {
+            text-align: center;
+            margin-bottom: 15px;
+            font-size: 14px;
+            color: #ff99c2;
+            text-shadow: 0 0 5px rgba(255, 0, 85, 0.7);
+            filter: drop-shadow(0 0 3px rgba(255, 0, 85, 0.5));
+        }
+        
+        .music-controls {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .music-player button {
+            background: linear-gradient(to bottom, #ff3385, #cc0033);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 0 10px rgba(255, 0, 85, 0.7),
+                        0 0 20px rgba(255, 0, 85, 0.4),
+                        inset 0 0 10px rgba(255, 255, 255, 0.3);
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            border: 1px solid rgba(255, 0, 85, 0.5);
+            text-shadow: 0 0 5px rgba(0, 0, 0, 0.7);
+            filter: drop-shadow(0 0 5px rgba(255, 0, 85, 0.7));
+        }
+        
+        .music-player button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 15px rgba(255, 0, 85, 0.9),
+                        0 0 30px rgba(255, 0, 85, 0.6),
+                        inset 0 0 15px rgba(255, 255, 255, 0.4);
+        }
+        
+        .progress-container {
+            width: 100%;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 3px;
+            margin-bottom: 10px;
+            overflow: hidden;
+            box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.5);
+        }
+        
+        .progress-bar {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(to right, #ff3385, #cc0033);
+            border-radius: 3px;
+            transition: width 0.3s;
+            box-shadow: 0 0 10px rgba(255, 0, 85, 0.7);
+        }
+        
+        .time-display {
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+            margin-bottom: 15px;
+            color: #ccc;
+            text-shadow: 0 0 3px rgba(255, 0, 85, 0.5);
+        }
+        
+        .volume-control {
+            display: flex;
+            align-items: center;
+            margin-top: 10px;
+        }
+        
+        .volume-control span {
+            margin-right: 10px;
+            font-size: 14px;
+            color: #ff66a3;
+            text-shadow: 0 0 5px rgba(255, 0, 85, 0.7);
+        }
+        
+        .volume-control input {
+            width: 100%;
+            height: 5px;
+            -webkit-appearance: none;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 3px;
+            outline: none;
+            box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.5);
+        }
+        
+        .volume-control input::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background: #ff3385;
+            cursor: pointer;
+            box-shadow: 0 0 10px rgba(255, 0, 85, 0.8),
+                        0 0 20px rgba(255, 0, 85, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+        
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 3;
+        }
+        
+        .particle {
+            position: absolute;
+            background: rgba(255, 0, 85, 0.5);
+            border-radius: 50%;
+            animation: float 15s infinite linear;
+            box-shadow: 0 0 10px rgba(255, 0, 85, 0.7),
+                        0 0 20px rgba(255, 0, 85, 0.5);
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(0) translateX(0) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) translateX(100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        .tulip-groups {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 10px;
+            z-index: 1;
+        }
+        
+        .tulip-group {
+            display: flex;
+            align-items: flex-end;
+        }
+        
+        .tulip-group-left {
+            justify-content: flex-start;
+        }
+        
+        .tulip-group-right {
+            justify-content: flex-end;
+        }
+        
+        .tulip-group-center {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+        }
+        
+        .tulip {
+            position: relative;
+            margin: 0 5px;
+            filter: drop-shadow(0 0 5px rgba(255, 0, 85, 0.5));
+        }
+        
+        .tulip-stem {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(to top, #006400, #00cc00);
+            border-radius: 3px;
+            z-index: 1;
+            box-shadow: 0 0 5px rgba(0, 100, 0, 0.5);
+        }
+        
+        .tulip-leaf {
+            position: absolute;
+            background: linear-gradient(to top, #008000, #00cc00);
+            border-radius: 0 50% 50% 0;
+            z-index: 0;
+            transform-origin: left center;
+            box-shadow: 0 0 5px rgba(0, 100, 0, 0.4);
+        }
+        
+        .tulip-flower {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(45deg, #ff66a3, #ff3385);
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            z-index: 2;
+            overflow: hidden;
+            box-shadow: 0 0 10px rgba(255, 0, 85, 0.6),
+                        inset 0 0 10px rgba(255, 255, 255, 0.3);
+            border: 1px solid rgba(255, 0, 85, 0.3);
+        }
+        
+        .tulip-small {
+            width: 30px;
+            height: 80px;
+        }
+        
+        .tulip-small .tulip-stem {
+            width: 4px;
+            height: 60px;
+        }
+        
+        .tulip-small .tulip-leaf {
+            width: 15px;
+            height: 12px;
+            bottom: 25px;
+            left: 55%;
+            transform: rotate(-15deg);
+        }
+        
+        .tulip-small .tulip-flower {
+            bottom: 55px;
+            width: 30px;
+            height: 30px;
+        }
+        
+        .tulip-medium {
+            width: 50px;
+            height: 120px;
+        }
+        
+        .tulip-medium .tulip-stem {
+            width: 6px;
+            height: 90px;
+        }
+        
+        .tulip-medium .tulip-leaf {
+            width: 22px;
+            height: 18px;
+            bottom: 40px;
+            left: 55%;
+            transform: rotate(-15deg);
+        }
+        
+        .tulip-medium .tulip-leaf:nth-child(3) {
+            bottom: 55px;
+            left: 40%;
+            transform: rotate(30deg);
+        }
+        
+        .tulip-medium .tulip-flower {
+            bottom: 85px;
+            width: 50px;
+            height: 50px;
+        }
+        
+        .tulip-large {
+            width: 70px;
+            height: 150px;
+        }
+        
+        .tulip-large .tulip-stem {
+            width: 8px;
+            height: 110px;
+        }
+        
+        .tulip-large .tulip-leaf {
+            width: 30px;
+            height: 24px;
+            bottom: 50px;
+            left: 55%;
+            transform: rotate(-15deg);
+        }
+        
+        .tulip-large .tulip-leaf:nth-child(3) {
+            bottom: 70px;
+            left: 40%;
+            transform: rotate(30deg);
+        }
+        
+        .tulip-large .tulip-leaf:nth-child(4) {
+            bottom: 35px;
+            left: 45%;
+            transform: rotate(-20deg);
+        }
+        
+        .tulip-large .tulip-flower {
+            bottom: 105px;
+            width: 70px;
+            height: 70px;
+        }
+        
+        .glow-effect {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            box-shadow: inset 0 0 100px 30px rgba(255, 0, 85, 0.3);
+            z-index: 5;
+        }
+        
+        @media (max-width: 768px) {
+            .heart-container {
+                transform: scale(0.9);
+            }
+            
+            .message {
+                font-size: 16px;
+            }
+            
+            .music-player {
+                max-width: 280px;
+            }
+            
+            .love-word {
+                font-size: 18px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .heart-container {
+                transform: scale(0.8);
+            }
+            
+            .message {
+                font-size: 14px;
+                margin: 10px 0;
+            }
+            
+            .music-player {
+                max-width: 260px;
+                padding: 12px;
+            }
+            
+            .music-player h3 {
+                font-size: 16px;
+            }
+            
+            .music-controls {
+                flex-direction: column;
+                align-items: center;
+                gap: 8px;
+            }
+            
+            .music-player button {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .love-word {
+                font-size: 16px;
+            }
+            
+            .tulip-group-left,
+            .tulip-group-right {
+                display: none;
+            }
+            
+            .tulip-group-center {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+        
+        @media (max-width: 320px) {
+            .heart-container {
+                transform: scale(0.7);
+            }
+            
+            .message {
+                font-size: 13px;
+            }
+            
+            .music-player {
+                max-width: 240px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="rain-container" id="rain-container"></div>
+        <div class="glow-effect"></div>
+        <div class="particles" id="particles"></div>
+        
+        <div class="heart-container">
+            <div class="heart"></div>
+        </div>
+        
+        <div class="message">Para mi Kristen, la mujer más especial de mi vida 💗</div>
+        
+        <div class="music-player">
+            <h3>Música para ti Cara Mia💗</h3>
+            
+            <div class="album-art-container">
+                <div class="album-art">
+                    <img class="album-image" src="TheNewAbnormal.jpg" alt="Corazón Musical">
+                </div>
+            </div>
+            
+            <div class="now-playing">
+                <div>Reproduciendo:</div>
+                <div id="song-title">The Strokes - Selfless</div>
+            </div>
+            
+            <div class="time-display">
+                <span id="current-time">0:00</span>
+                <span id="total-time">0:00</span>
+            </div>
+            <div class="progress-container">
+                <div class="progress-bar" id="progress-bar"></div>
+            </div>
+            <div class="music-controls">
+                <button id="play-btn"><i class="fas fa-play"></i> Reproducir</button>
+                <button id="pause-btn"><i class="fas fa-pause"></i> Pausar</button>
+            </div>
+            <div class="volume-control">
+                <span>Volumen:</span>
+                <input type="range" id="volume" min="0" max="1" step="0.1" value="0.7">
+            </div>
+            <audio id="love-song" loop>
+                <source src="The Strokes - Selfless.mp3" type="audio/mpeg">
+                Tu navegador no soporta el elemento de audio.
+            </audio>
+        </div>
+    </div>
+    
+    <div class="tulip-groups">
+        <div class="tulip-group tulip-group-left">
+            <div class="tulip tulip-small">
+                <div class="tulip-stem"></div>
+                <div class="tulip-leaf"></div>
+                <div class="tulip-flower"></div>
+            </div>
+            <div class="tulip tulip-medium">
+                <div class="tulip-stem"></div>
+                <div class="tulip-leaf"></div>
+                <div class="tulip-leaf"></div>
+                <div class="tulip-flower"></div>
+            </div>
+            <div class="tulip tulip-large">
+                <div class="tulip-stem"></div>
+                <div class="tulip-leaf"></div>
+                <div class="tulip-leaf"></div>
+                <div class="tulip-leaf"></div>
+                <div class="tulip-flower"></div>
+            </div>
+        </div>
+        
+        <div class="tulip-group tulip-group-center">
+            <div class="tulip tulip-medium">
+                <div class="tulip-stem"></div>
+                <div class="tulip-leaf"></div>
+                <div class="tulip-leaf"></div>
+                <div class="tulip-flower"></div>
+            </div>
+            <div class="tulip tulip-large">
+                <div class="tulip-stem"></div>
+                <div class="tulip-leaf"></div>
+                <div class="tulip-leaf"></div>
+                <div class="tulip-leaf"></div>
+                <div class="tulip-flower"></div>
+            </div>
+            <div class="tulip tulip-medium">
+                <div class="tulip-stem"></div>
+                <div class="tulip-leaf"></div>
+                <div class="tulip-leaf"></div>
+                <div class="tulip-flower"></div>
+            </div>
+        </div>
+        
+        <div class="tulip-group tulip-group-right">
+            <div class="tulip tulip-large">
+                <div class="tulip-stem"></div>
+                <div class="tulip-leaf"></div>
+                <div class="tulip-leaf"></div>
+                <div class="tulip-leaf"></div>
+                <div class="tulip-flower"></div>
+            </div>
+            <div class="tulip tulip-medium">
+                <div class="tulip-stem"></div>
+                <div class="tulip-leaf"></div>
+                <div class="tulip-leaf"></div>
+                <div class="tulip-flower"></div>
+            </div>
+            <div class="tulip tulip-small">
+                <div class="tulip-stem"></div>
+                <div class="tulip-leaf"></div>
+                <div class="tulip-flower"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function createLoveWords() {
+            const rainContainer = document.getElementById('rain-container');
+            const lovePhrases = ["I love you my Kristen", "Te amo mi Kristen", "Kristen 💗", "Love Kristen 💗", "I love you Cara Mia"];
+
+            const wordCount = window.innerWidth < 768 ? 50 : 80;
+
+            for (let i = 0; i < wordCount; i++) {
+                const word = document.createElement('div');
+                word.className = 'love-word';
+                word.textContent = lovePhrases[Math.floor(Math.random() * lovePhrases.length)];
+                
+                const leftPos = Math.random() * 100;
+                word.style.left = `${leftPos}%`;
+                
+                const fontSize = 15 + Math.random() * 20;
+                word.style.fontSize = `${fontSize}px`;
+                
+                const hue = 330 + Math.random() * 30;
+                word.style.color = `hsla(${hue}, 100%, 60%, ${0.5 + Math.random() * 0.5})`;
+                
+                const delay = Math.random() * 15;
+                const duration = 5 + Math.random() * 15;
+                word.style.animationDuration = `${duration}s`;
+                word.style.animationDelay = `${delay}s`;
+                
+                rainContainer.appendChild(word);
+            }
+        }
+        
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const colors = ['rgba(255, 0, 85, 0.5)', 'rgba(255, 102, 163, 0.5)', 'rgba(255, 0, 128, 0.5)'];
+            
+            const particleCount = window.innerWidth < 768 ? 20 : 30;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                
+                const size = Math.random() * 10 + 5;
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+
+                const leftPos = Math.random() * 100;
+                particle.style.left = `${leftPos}%`;
+                
+                const bottomPos = Math.random() * 20;
+                particle.style.bottom = `${bottomPos}%`;
+                particle.style.background = colors[Math.floor(Math.random() * colors.length)];
+                const duration = Math.random() * 20 + 10;
+                particle.style.animationDuration = `${duration}s`;
+                
+                const delay = Math.random() * 10;
+                particle.style.animationDelay = `${delay}s`;
+                
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        function setupMusicPlayer() {
+            const audio = document.getElementById('love-song');
+            const playBtn = document.getElementById('play-btn');
+            const pauseBtn = document.getElementById('pause-btn');
+            const volumeControl = document.getElementById('volume');
+            const progressBar = document.getElementById('progress-bar');
+            const currentTimeEl = document.getElementById('current-time');
+            const totalTimeEl = document.getElementById('total-time');
+            const songTitleEl = document.getElementById('song-title');
+
+            audio.volume = volumeControl.value;
+
+            function formatTime(seconds) {
+                const min = Math.floor(seconds / 60);
+                const sec = Math.floor(seconds % 60);
+                return `${min}:${sec < 10 ? '0' : ''}${sec}`;
+            }
+
+            function updateProgress() {
+                const { currentTime, duration } = audio;
+                const progressPercent = (currentTime / duration) * 100;
+                progressBar.style.width = `${progressPercent}%`;
+                currentTimeEl.textContent = formatTime(currentTime);
+                
+                if (currentTime < duration * 0.3) {
+                    songTitleEl.textContent = "The Strokes - Selfless";
+                } else if (currentTime < duration * 0.6) {
+                    songTitleEl.textContent = "The Strokes - Selfless";
+                } else {
+                    songTitleEl.textContent = "The Strokes - Selfless";
+                }
+            }
+
+            function setProgress(e) {
+                const width = this.clientWidth;
+                const clickX = e.offsetX;
+                const duration = audio.duration;
+                audio.currentTime = (clickX / width) * duration;
+            }
+
+            volumeControl.addEventListener('input', function() {
+                audio.volume = volumeControl.value;
+            });
+
+            audio.addEventListener('loadedmetadata', function() {
+                totalTimeEl.textContent = formatTime(audio.duration);
+            });
+
+            audio.addEventListener('timeupdate', updateProgress);
+            
+            progressBar.parentElement.addEventListener('click', setProgress);
+            
+            playBtn.addEventListener('click', function() {
+                audio.play();
+                songTitleEl.textContent = "The Strokes - Selfless";
+            });
+            
+            pauseBtn.addEventListener('click', function() {
+                audio.pause();
+            });
+            setTimeout(function() {
+                const playAudio = confirm("¿Te gustaría reproducir música de fondo? 💗");
+                if (playAudio) {
+                    audio.play().catch(error => {
+                        console.log("La reproducción automática fue prevenida:", error);
+                    });
+                    songTitleEl.textContent = "The Strokes - Selfless";
+                }
+            }, 2000);
+        }
+
+        window.onload = function() {
+            createLoveWords();
+            createParticles();
+            setupMusicPlayer();
+        };
+    
+        window.addEventListener('resize', function() {
+            document.getElementById('particles').innerHTML = '';
+            document.getElementById('rain-container').innerHTML = '';
+            createLoveWords();
+            createParticles();
+        });
+    </script>
+</body>
+</html>
